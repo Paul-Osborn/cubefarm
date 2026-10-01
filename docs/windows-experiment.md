@@ -96,7 +96,7 @@ Next start creates a fresh office. Preserve the backup until you have recovered 
 | Upstream CI at the inspected commit | Windows, macOS, Linux checks and browser job all passed; [run](https://github.com/leonvanzyl/cubefarm/actions/runs/36837045979) |
 | ASUS Windows 11 laptop with real subscriptions | Not run; requires access to that machine and interactive account login |
 
-The cloud keeper failure also reproduced in isolation; cause is unresolved. Do not treat the local unit suite as green or assume this reproduces on Windows. Existing Windows CI covers build/test/package startup, not an authenticated real Claude/Codex task.
+The cloud keeper failure also reproduced in isolation. A direct Node Unix-socket probe fails with `EPERM: operation not permitted` here, which blocks the keeper; Windows uses named pipes instead. Do not treat the local unit suite as green or assume this reproduces on Windows. Existing Windows CI covers build/test/package startup, not an authenticated real Claude/Codex task.
 
 Known upstream workflow issues: [#53](https://github.com/leonvanzyl/cubefarm/issues/53) describes fixes reported as pushed without a new commit; [#54](https://github.com/leonvanzyl/cubefarm/issues/54) describes resuming a stale QA session during a fix after restart. Avoid deliberately restarting mid-fix during the first real trial.
 
